@@ -1,10 +1,11 @@
 #include <iostream>
-#include <cmath> 
+#include <cmath>
+#include <limits>
 using namespace std;
 
 int main() {
   char op;
-  float num1, num2, result = 0; 
+  float num1, num2, result = 0;
   char choice;
 
   do {
