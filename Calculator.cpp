@@ -99,5 +99,6 @@ int main() {
   } while (choice == 'y' || choice == 'Y');
 
   cout << "do widzenia!\n";
+
   return 0;
 }
