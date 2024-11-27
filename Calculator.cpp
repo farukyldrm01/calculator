@@ -98,6 +98,6 @@ int main() {
 
   } while (choice == 'y' || choice == 'Y');
 
-  cout << "Goodbye!\n";
+  cout << "Görüşürüz!\n";
   return 0;
 }
