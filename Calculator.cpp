@@ -1,40 +1,59 @@
-# include <iostream>
+#include <iostream>
+#include <limits>
 using namespace std;
 
 int main() {
-
   char op;
   float num1, num2;
+  char choice;
 
-  cout << "Enter operator: +, -, *, /: ";
-  cin >> op;
+  do {
+    
+    cout << "Enter operator (+, -, *, /): ";
+    cin >> op;
 
-  cout << "Enter two operands: ";
-  cin >> num1 >> num2;
+    
+    if (op != '+' && op != '-' && op != '*' && op != '/') {
+      cout << "Error! Invalid operator.\n";
+      continue;
+    }
 
-  switch(op) {
+ 
+    cout << "Enter two operands: ";
+    while (!(cin >> num1 >> num2)) {
+      cout << "Invalid input. Please enter numeric values: ";
+      cin.clear();  
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');  
+    }
 
-    case '+':
-      cout << num1 << " + " << num2 << " = " << num1 + num2;
-      break;
+  
+    switch (op) {
+      case '+':
+        cout << num1 << " + " << num2 << " = " << num1 + num2 << endl;
+        break;
+      case '-':
+        cout << num1 << " - " << num2 << " = " << num1 - num2 << endl;
+        break;
+      case '*':
+        cout << num1 << " * " << num2 << " = " << num1 * num2 << endl;
+        break;
+      case '/':
+        if (num2 == 0) {
+          cout << "Error! Division by zero is not allowed.\n";
+        } else {
+          cout << num1 << " / " << num2 << " = " << num1 / num2 << endl;
+        }
+        break;
+      default:
+        cout << "Unexpected error.\n";
+    }
 
-    case '-':
-      cout << num1 << " - " << num2 << " = " << num1 - num2;
-      break;
+     
+    cout << "Do you want to perform another calculation? (y/n): ";
+    cin >> choice;
 
-    case '*':
-      cout << num1 << " * " << num2 << " = " << num1 * num2;
-      break;
+  } while (choice == 'y' || choice == 'Y');
 
-    case '/':
-      cout << num1 << " / " << num2 << " = " << num1 / num2;
-      break;
-
-    default:
-      // If the operator is other than +, -, * or /, error message is shown
-      cout << "Error! operator is not correct";
-      break;
-  }
-
+  cout << "Goodbye!\n";
   return 0;
 }
